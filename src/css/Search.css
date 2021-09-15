@@ -1,0 +1,19 @@
+.formSearchData{
+    font-size:1em;
+    padding:2%;
+    display:flex;
+    flex-direction:row;
+    justify-content: center;
+    gap:1em;
+}
+label{
+    color:darkcyan;
+    font-family:Georgia;
+    font-size:2em;
+}
+input{
+    padding:0.8%;
+}
+.btnSearch{
+    padding:1%;
+}

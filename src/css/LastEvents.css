@@ -1,0 +1,38 @@
+.containerevents{
+    display: flex;
+    flex-direction: row;
+    border: dashed 2px silver;
+    font-family:Georgia;
+    margin:3em;
+    line-height:3em;
+}
+.links{
+    text-decoration:none;
+    color: black;
+}
+.eventinfo{
+    font-size:1em;
+    padding:0.5em;
+}
+.titleEvent{
+    font-size:1.5em;
+    color:mediumaquamarine;
+}
+.date{
+    font-size:1em;
+}
+.btnheart{
+    font-size:2.5em;
+    display:block;
+    align-self: center;
+    color:darkred;
+    border-style:none;
+    background-color:transparent;
+}
+.btnheart:hover{
+    color:lightcoral;
+}
+figcaption{
+    padding:0;
+    margin:0;
+}

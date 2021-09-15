@@ -1,0 +1,27 @@
+.containerNav{
+    background-color:mediumaquamarine;
+    font-family: Georgia, serif;
+}
+
+.navlist{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1em;
+    margin:0;
+
+
+}
+
+li{
+    list-style: none;
+
+}
+.link{
+    text-decoration:none;
+    font-size:1.5em;
+    color:white;
+}
+.link:hover{
+    background-color:darkcyan;
+}
