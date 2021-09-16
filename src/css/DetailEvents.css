@@ -1,0 +1,73 @@
+.containerDetail {
+  display: flex;
+  flex-direction: column;
+  font-family: Georgia;
+}
+.containerDetail .title {
+  font-size: 2em;
+}
+.Details {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  font-family: Georgia;
+  margin: 1em;
+}
+.leftbox {
+  display: flex;
+  flex-direction: column;
+  font-family: Georgia;
+  width: 70%;
+  box-sizing: content-box;
+}
+.leftbox .imageCover {
+  max-width: 100%;
+}
+.leftbox .description {
+  font-size: 1.2em;
+  margin: 1em;
+  line-height: 1em;
+}
+.leftbox button {
+  font-size: 1em;
+  padding: 2%;
+  margin: 10%;
+  border: none;
+  width: 20%;
+  align-self: center;
+}
+
+.retour {
+  text-decoration: none;
+  color: grey;
+  margin: 0;
+  padding: 0;
+  font-size: 2em;
+}
+.rightbox {
+  text-decoration: none;
+  color: black;
+  border: solid 2px darkgrey;
+  border-radius:1.5%;
+  width:25%;
+  background-color:lightgrey;
+  text-align:start;
+  padding-left:0.5em;
+}
+.rightbox .btnSauvegarde {
+    font-size:1em;
+    margin:1em;
+    padding:1em;
+    font-weight:bolder;
+
+}
+.rightbox .btnSauvegarde:hover {
+    background-color:mediumaquamarine;
+    color:white
+}
+.containerdate .date, .containerprice .price, .containeradress .adress, .containertransport .transport, .containercontact .contact {
+    font-family:Georgia;
+    font-size:1.5em;
+    color:mediumaquamarine;
+    font-weight:bold;
+}

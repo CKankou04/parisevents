@@ -16,4 +16,55 @@ input{
 }
 .btnSearch{
     padding:1%;
+    background-color:silver ;
+    border-radius:8%;
+    color:white;
 }
+ul.listEvents{
+
+
+}
+li.list{
+    display:flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+}
+.ii{
+    display:flex;
+    flex-direction:row;
+    justify-content: space-between;
+    flex-wrap:wrap
+}
+.infos{
+    display:flex;
+    flex-direction:column;
+    justify-content: space-between;
+    width:30%;
+    height:auto;
+    border: dashed 2px silver;
+    padding:0.2em;
+    margin:1em;
+    background-color:ivory;
+}
+.infobox{
+    font-family:Georgia;
+}
+.infobox .title{
+color:mediumaquamarine;
+font-size:1.5em;
+}
+.infobox .date, .infobox .description{
+    padding-bottom:0.5em;
+}
+.infobox .btnfav{
+    font-size:2.5em;
+    display:block;
+    align-self: center;
+    color:mistyrose;
+    border-style:none;
+    background-color:transparent;
+}
+.btnfav:hover{
+    color:lightcoral;
+}
+

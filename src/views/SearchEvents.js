@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { FaHeart } from "react-icons/fa";
+import { FaHeart, FaTrash } from "react-icons/fa";
 import "../css/Search.css";
-import "../css/ListEvents.css";
-
 
 export const SearchEvents = () => {
   const [data, setData] = useState([]);
@@ -24,10 +22,32 @@ export const SearchEvents = () => {
 
   const fetchDataWithFilter = async () => {
     const data = await fetch(
-      `https://opendata.paris.fr/api/v2/catalog/datasets/que-faire-a-paris-/records?limit=10&search=${searchQuery}&pretty=false&timezone=UTC`
+      `https://opendata.paris.fr/api/v2/catalog/datasets/que-faire-a-paris-/records?limit=20&search=${searchQuery}&pretty=false&timezone=UTC`
     );
     const result = await data.json();
     setData(result);
+  };
+  const addToFavoriteList = (eventRecord) => {
+    let myfav = JSON.parse(localStorage.getItem("myfav")) || [];
+
+    const hasEventRecord = myfav.some(
+      (element) => element.id === eventRecord.id
+    );
+    if (hasEventRecord) {
+      alert("Cet element  existe déjà en favori");
+      return;
+    }
+
+    myfav.push(eventRecord);
+    localStorage.setItem("myfav", JSON.stringify(myfav));
+    alert("Cet element vient d'être ajouté en favoris");
+  };
+
+  const removeToFavoriteList = (id) => {
+    let myfav = JSON.parse(localStorage.getItem("myfav")) || [];
+    const removeArr = myfav.filter((element) => element.id !== id);
+    localStorage.setItem("myfav", JSON.stringify(removeArr));
+    alert("Cet element a été supprimé");
   };
 
   return (
@@ -46,32 +66,45 @@ export const SearchEvents = () => {
         </form>
 
         <ul className="listEvents">
-          <li>
-            <div>
+          <li class="list">
+            <div className="ii">
               {data?.records?.map((event, index) => (
-                <Link
-                  to={`/listevents/${event.record.id}`}
-                  className="linkeventdetail"
-                >
-                  <div key={index}>
+                <div key={index} className="infos">
+                  <Link
+                    to={`/detailevents/${event.record.id}`}
+                    className="linkeventdetail"
+                  >
                     <figure className="imageEvents">
                       <figcaption>
                         <img
                           src={event.record.fields.cover_url}
                           alt="imcover"
-                          width="40%"
-                          height="40%"
+                          width="90%"
+                          height="auto"
                         />
                       </figcaption>
                     </figure>
-                    <div>
-                      <p>{event.record.fields.title}</p>
-                      <div>{event.record.fields.date_start}</div>
-                      <div>{event.record.fields.lead_text}</div>
-                      <button>{FaHeart}favoris</button>
+                  </Link>
+                  <div className="infobox">
+                    <p className="title">{event.record.fields.title}</p>
+                    <div className="date">
+                      {new Date(
+                        event.record.fields.date_start
+                      ).toLocaleDateString()}{" "}
+                    </div>
+                    <div className="description">
+                      {event.record.fields.lead_text}
+                    </div>
+                    <div className="buttons">
+                      <button onClick={() => addToFavoriteList(event.record)} className="btnfav" >
+                        <FaHeart />
+                      </button>
+                      <button onClick={() => removeToFavoriteList(event.record.id)} className="btnfav">
+                        <FaTrash />
+                      </button>
                     </div>
                   </div>
-                </Link>
+                </div>
               ))}
             </div>
           </li>

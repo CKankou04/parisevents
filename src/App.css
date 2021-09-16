@@ -1,5 +1,6 @@
 body{
   background-image: url("./asset/beach.jpg");
+  background-attachment: fixed;
 }
 .App {
   text-align: center;

@@ -4,7 +4,7 @@ import NavBar from './Services/NavBar';
 import {BrowserRouter, Switch, Route} from 'react-router-dom'
 import Home from './views/Home';
 import SearchEvents from './views/SearchEvents';
-import ListEvents from './views/ListEvents';
+import DetailEvents from './views/DetailEvents';
 import Favoris from './views/Favoris'
 
 
@@ -18,7 +18,7 @@ function App() {
         <Switch >
             <Route path="/" component={() => <Home />} exact/>
             <Route path="/search" component={() => <SearchEvents />} />
-            <Route path="/listevents/:id" component={() => <ListEvents />}  />
+            <Route path="/detailevents/:id" component={() => <DetailEvents />}  />
             <Route path="/favoris" component={Favoris} />
 
           </Switch>

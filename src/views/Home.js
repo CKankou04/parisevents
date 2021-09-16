@@ -21,8 +21,7 @@ export const Home = () => {
                 <hr />
 
                 <div>
-                    <p>Actualité</p>
-                    <p>Dernier évènement publié:</p>
+                    <p className="lastE">Dernier évènement publié:</p>
                 </div>
 
                 <LastEvents />

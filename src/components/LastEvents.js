@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { FaHeart } from "react-icons/fa";
+import { FaHeart, FaTrash } from "react-icons/fa";
 import "../css/LastEvents.css";
 import { Link } from "react-router-dom";
 
@@ -19,39 +19,42 @@ export const LastEvents = () => {
   };
 
   const addToFavoriteList = (eventRecord) => {
-    let myfav = JSON.parse(localStorage.getItem('myfav')) || [];
+    let myfav = JSON.parse(localStorage.getItem("myfav")) || [];
 
-    const hasEventRecord = myfav.some((element) => element.id === eventRecord.id)
+    const hasEventRecord = myfav.some(
+      (element) => element.id === eventRecord.id
+    );
     if (hasEventRecord) {
-      alert('Cet element  existe déjà en favori')
-      return
+      alert("Cet element  existe déjà en favori");
+      return;
     }
 
     myfav.push(eventRecord);
-    localStorage.setItem('myfav', JSON.stringify(myfav));
-    alert("Cet element vient d'être ajouté en favoris")
+    localStorage.setItem("myfav", JSON.stringify(myfav));
+    alert("Cet element vient d'être ajouté en favoris");
   };
 
   const removeToFavoriteList = (id) => {
-      let todos = JSON.parse(localStorage.getItem('myfav')) || []
-      const removeArr = todos.filter(element => element.id !== id)
-      localStorage.setItem('myfav', JSON.stringify(removeArr))
-      alert('Cet element a été supprimé')
-  }
+    let todos = JSON.parse(localStorage.getItem("myfav")) || [];
+    const removeArr = todos.filter((element) => element.id !== id);
+    localStorage.setItem("myfav", JSON.stringify(removeArr));
+    alert("Cet element a été supprimé");
+  };
 
   return (
     <div>
       {data?.records?.map((event, index) => (
-      <div className="links" key={index}>
+        <div className="links" key={index}>
           <div className="containerevents">
-            <Link to={`/listevents/${event.record.id}`}>
+            <Link to={`/detailevents/${event.record.id}`}>
               <figure>
                 <figcaption>
                   <img
                     src={event.record.fields.cover_url}
                     alt="imagecover"
                     width="80%"
-                    height="50%" />
+                    height="50%"
+                  />
                 </figcaption>
               </figure>
             </Link>
@@ -60,12 +63,23 @@ export const LastEvents = () => {
               <p className="titleEvent">{event.record.fields.title}</p>
               <div>{event.record.fields.lead_text}</div>
               <span>
-                {new Date(event.record.fields.date_start).toLocaleDateString()} -{" "}
-                {new Date(event.record.fields.date_end).toLocaleDateString()}
+                {new Date(event.record.fields.date_start).toLocaleDateString()}{" "}
+                - {new Date(event.record.fields.date_end).toLocaleDateString()}
               </span>
-
-              <button onClick={() => addToFavoriteList(event.record)} className="btnheart"><FaHeart /></button>
-              <button onClick={() => removeToFavoriteList(event.record.id)} >supprimer</button>
+              <div className="buttons">
+                <button
+                  onClick={() => addToFavoriteList(event.record)}
+                  className="btnfav"
+                >
+                  <FaHeart />
+                </button>
+                <button
+                  onClick={() => removeToFavoriteList(event.record.id)}
+                  className="btnfav"
+                >
+                  <FaTrash />
+                </button>
+              </div>
             </div>
           </div>
         </div>

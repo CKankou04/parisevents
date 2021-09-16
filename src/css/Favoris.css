@@ -1,0 +1,38 @@
+.container{
+    display:flex;
+    flex-direction:row;
+    justify-content: space-between;
+    flex-wrap:wrap
+}
+.containerInf{
+    display:flex;
+    flex-direction:column;
+    justify-content: space-between;
+    width:30%;
+    height:auto;
+    border: double 3px silver;
+    padding:0.2em;
+    margin:1em;
+    background-color:whitesmoke;
+}
+.favbox{
+    font-family:Georgia;
+}
+.favbox .title{
+color:mediumaquamarine;
+font-size:1.5em;
+}
+.favbox .date, .favbox .description{
+    padding-bottom:0.5em;
+}
+.favbox .btnfav{
+    font-size:2.5em;
+    display:block;
+    align-self: center;
+    color:mediumaquamarine;
+    border-style:none;
+    background-color:transparent;
+}
+.btnfav:hover{
+    color:lightcoral;
+}
